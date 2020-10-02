@@ -3,16 +3,30 @@ const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
 const filterOption = document.querySelector('.filter-todo');
+let deleteCompleted = document.querySelector('.todo-dc');
+//let deleteeCompleted = document.querySelectorAll('.completed');
+
 
 //Event Listeners
 document.addEventListener('DOMContentLoaded', getTodos);
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
 filterOption.addEventListener('click', filterTodo);
+deleteCompleted.addEventListener('click', completedDelet)
 
 
 
 //Functions
+
+function completedDelet(e) {
+  const item = e.target;
+  //DELETE CHECKED TODO 
+  if (item.classList["completed"] === 'todo-dc') {
+    const todo = item.parentElement;
+    todo.remove();
+  }
+}
+
 
 function addTodo(event) {
 	//Prevent form from sumbitting
@@ -56,12 +70,13 @@ function deleteCheck(e) {
 		const todo = item.parentElement;
 		todo.classList.toggle('completed');
 	}
-	//DELETE CHECKED TODO 
-	if (item.classList["completed"] === 'todo-dc') {
-		const todo = item.parentElement;
-		todo.remove();
-	}
+
 }
+
+dc_todo.onclick = function completedDelet() {
+	document.getElementsByClassName('completed')[0].remove;
+}
+
 
 function filterTodo(e) {
 	const todos = todoList.childNodes;
