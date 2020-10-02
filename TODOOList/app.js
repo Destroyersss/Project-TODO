@@ -12,7 +12,6 @@ filterOption.addEventListener('click', filterTodo);
 
 
 
-
 //Functions
 
 function addTodo(event) {
@@ -52,12 +51,15 @@ function deleteCheck(e) {
 		todo.remove();
 		removeLocalTodos(todo);
 	}
-
-
 	//CHECK MARK 
 	if (item.classList[0] === 'complete-btn') {
 		const todo = item.parentElement;
 		todo.classList.toggle('completed');
+	}
+	//DELETE CHECKED TODO 
+	if (item.classList["completed"] === 'todo-dc') {
+		const todo = item.parentElement;
+		todo.remove();
 	}
 }
 
@@ -139,7 +141,9 @@ function removeLocalTodos(todo) {
 	} else {
 		todos = JSON.parse(localStorage.getItem('todos'));
 	}
+	//const todoIndex = Array.from(todosList.childNodes).indexOf(todo);
+	//todos.splice(todoIndex, 1);
 	const todoIndex = todo.children[0].innerText;
-	todos.splice(todos.index0f(todoIndex),1);
+	todos.splice(todos.indexOf(todoIndex),1);
 	localStorage.setItem('todos', JSON.stringify(todos));
 }
