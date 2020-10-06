@@ -141,20 +141,14 @@ function getTodos() {
 }
 
 function removeLocalTodos(todo) {
-	let todos;
-	if (localStorage.getItem('todos') === null) {
-		todos = [];
-	} else {
-		todos = JSON.parse(localStorage.getItem('todos'));
-	}
-	//const todoIndex = Array.from(todosList.childNodes).indexOf(todo);
-	//todos.splice(todoIndex, 1);
-	//const todoIndex = todo.children[0].innerText;
-	//todos.splice(todos.indexOf(todoIndex),1);
-	const todoIndex = document.querySelectorAll('.todo-list');
-	let simplee = todoIndex.getAttribute('data-value');
-	todoIndex.setAttribute('data-value',todos)
+	let todos = JSON.parse(localStorage.getItem('todos')) || [];
+	console.log (todos);
+	const todoText = todo.children[0].innerText;
+	console.log(todoText)
+	console.log(todos.indexOf(todoText))
+	todos.splice(todos.indexOf(todoText),1);
 	localStorage.setItem('todos', JSON.stringify(todos));
+
 	
 }
 
