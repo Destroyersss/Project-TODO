@@ -140,11 +140,27 @@ select {
 	pointer-events: none;
 }
 
+.btn-deleted {
+	text-align: center;
+	
+}
 
+.todo-dc {
+	width: 29%;
+	padding: 10px;
+	font-family: "Playfair Display", sans-serif;
+	font-weight: bold;
+	background: #ff6f47;
+}
 
+.todo-dc:hover {
+	background: rgb(163, 10, 10);
+	transition: all 0.3s ease;
+}
 
-
-
+todo-dc:active {
+	border: none;
+}
 
 
 

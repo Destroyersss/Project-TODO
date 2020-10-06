@@ -18,14 +18,7 @@ deleteCompleted.addEventListener('click', completedDelet)
 
 //Functions
 
-function completedDelet(e) {
-  const item = e.target;
-  //DELETE CHECKED TODO 
-  if (item.classList["completed"] === 'todo-dc') {
-    const todo = item.parentElement;
-    todo.remove();
-  }
-}
+
 
 
 function addTodo(event) {
@@ -73,9 +66,7 @@ function deleteCheck(e) {
 
 }
 
-dc_todo.onclick = function completedDelet() {
-	document.getElementsByClassName('completed')[0].remove;
-}
+
 
 
 function filterTodo(e) {
@@ -158,7 +149,29 @@ function removeLocalTodos(todo) {
 	}
 	//const todoIndex = Array.from(todosList.childNodes).indexOf(todo);
 	//todos.splice(todoIndex, 1);
-	const todoIndex = todo.children[0].innerText;
-	todos.splice(todos.indexOf(todoIndex),1);
+	//const todoIndex = todo.children[0].innerText;
+	//todos.splice(todos.indexOf(todoIndex),1);
+	const todoIndex = document.querySelectorAll('.todo-list');
+	let simplee = todoIndex.getAttribute('data-value');
+	todoIndex.setAttribute('data-value',todos)
 	localStorage.setItem('todos', JSON.stringify(todos));
+	
 }
+
+//function completedDelet(e) {
+//  document
+//    .querySelectorAll(".todo-list .todo.completed")
+//    .forEach((e) => e.remove());
+//}
+function completedDelet() {
+  document.querySelectorAll(".todo-list .todo.completed").forEach((e) => {
+    removeLocalTodos(e);
+    e.remove();
+  });
+}
+
+//function completedDelet() {
+//  document
+//    .querySelectorAll(".todo-list .todo.completed")
+//    .forEach((e) => removeLocalTodos(e));
+//}
